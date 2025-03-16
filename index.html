@@ -109,7 +109,7 @@
                     <input id="user" type="text" placeholder="Enter Your Name" required class="border-2 border-gray-200 p-4"/>
                     <input id="password" type="password" placeholder="Enter password (123456)" required class="border-2 border-gray-200 p-4"/>
                 </form>
-                <button onclick="login()" class="btn my-5 text-white bg-Purple ">Get Started</button>
+                <!-- <button onclick="login()" class="btn my-5 text-white bg-Purple ">Get Started</button> -->
           </div>
         </div>
         <div class=" h-full hero-img mt-12 mr-11">
@@ -120,79 +120,83 @@
     <main class="mx-20">
       <!-- vocabulary section -->
       <section id="vocabulary" class="my-20">
+        
         <h2 class="text-2xl lg:text-4xl font-bold text-center"><span class="text-Sky_blue">Let's</span> Learn Vocabularies</h2>
-        <!--<div class="vocabulary-grid grid lg:grid-cols-3 gap-8 my-10">
-          
-           <div class="vocabulary-card bg-white p-5 shadow-md">
-            <img src="assets/vocabulary-3.png" alt="vocabulary" class="h-40 w-full"/>
-            <h3 class="text-xl font-bold my-3">Vocabulary 3</h3>
-            <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div> -->
-        <div class="h-52 bg-base hind-siliguri flex flex-col justify-center items-center">
+
+        <div id="lesson-container" class="flex justify-center gap-4 my-10">
+          <!-- dynamically generated lessons -->
+        </div>
+        <div id="no-category" class="h-52 bg-base hind-siliguri flex flex-col justify-center items-center">
           <h4 class="text-sm text-txt_gray">আপনি এখনো কোন Lesson Select করেন ন</h4>
           <h2 class="text-4xl">একটি Lesson Select করুন।</h2>
           
         </div>
+        <div id="vocabulary-container" class=" grid lg:grid-cols-3 gap-8 p-8 bg-base">
+          
+        </div>
       </section>
+      <!-- faq section -->
       <section id="faq" class="grid gap-5">
         <h2 class="text-2xl lg:text-4xl font-bold text-center"><span class="text-Sky_blue">Frequently</span> Asked Questions</h2>
         
-        <!-- <div class="collapse collapse-plus bg-base-100 border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold"></div>
-          <div class="collapse-content text-sm"></div>
+        <div class="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="my-accordion-3" id="faq1" />
+          <label for="faq1" class="collapse-title font-semibold"> Whats the difference between var, let, and const</label>
+          <div class="collapse-content text-sm">
+            var is function-scoped and allows re-declaration. let is block-scoped and can be reassigned. const is block-scoped and cannot be reassigned. Use let for variables that change and const for constants.
+          </div>
         </div>
         <div class="collapse collapse-plus bg-base-100 border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold"></div>
-          <div class="collapse-content text-sm"></div>
+          <input type="radio" name="my-accordion-3" id="faq2" />
+          <label for="faq2" class="collapse-title font-semibold">whats the difference between map(), forEach(), and filter() ?</label>
+          <div class="collapse-content text-sm">map() returns a new transformed array. forEach() executes a function but doesn’t return anything. filter() creates a new array with elements that meet a condition.</div>
         </div>
         <div class="collapse collapse-plus bg-base-100 border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold"></div>
-          <div class="collapse-content text-sm"></div>
+          <input type="radio" name="my-accordion-3" id="faq3" />
+          <label for="faq3" class="collapse-title font-semibold">Explain arrow functions and how they are different from regular functions ?</label>
+          <div class="collapse-content text-sm">Arrow functions have a shorter syntax, inherit this, and don’t have arguments. Regular functions have their own this, support arguments, and can be used as constructors.</div>
         </div>
         <div class="collapse collapse-plus bg-base-100 border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold"></div>
-          <div class="collapse-content text-sm"></div>
+          <input type="radio" name="my-accordion-3" id="faq4" />
+          <label for="faq4" class="collapse-title font-semibold">how JavaScript Promises work?</label>
+          <div class="collapse-content text-sm">Promises handle asynchronous operations with states: pending, fulfilled, or rejected. Use .then() for success and .catch() for errors.</div>
         </div>
         <div class="collapse collapse-plus bg-base-100 border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold"></div>
-          <div class="collapse-content text-sm"></div>
-        </div> -->
+          <input type="radio" name="my-accordion-3" id="faq5" />
+          <label for="faq5" class="collapse-title font-semibold">How closures work in JavaScript?</label>
+          <div class="collapse-content text-sm">Closures allow a function to retain access to variables from its outer scope, even after the outer function has finished executing.</div>
+        </div>
         <div class="collapse collapse-plus bg-base border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold">How can I start learning English on this website?</div>
+          <input type="radio" name="my-accordion-3" id="faq6" />
+          <label for="faq6" class="collapse-title font-semibold">How can I start learning English on this website?</label>
           <div class="collapse-content text-sm">Getting started is easy! Simply click on the "Get Started" button on the homepage and log in with your credentials. If you're new, you can explore our learning resources without an account. Once logged in, you’ll have access to interactive lessons, pronunciation guides, and practice exercises.</div>
         </div>
         <div class="collapse collapse-plus bg-base border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold">Is this website free to use?</div>
+          <input type="radio" name="my-accordion-3" id="faq7" />
+          <label for="faq7" class="collapse-title font-semibold">Is this website free to use?</label>
           <div class="collapse-content text-sm">Yes! English Janala provides free access to essential learning materials, including pronunciation lessons, vocabulary-building exercises, and interactive quizzes. However, we may offer premium courses with additional features in the future.</div>
         </div>
         <div class="collapse collapse-plus bg-base border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold">3. Do I need to create an account?</div>
+          <input type="radio" name="my-accordion-3" id="faq8" />
+          <label for="faq8" class="collapse-title font-semibold">Do I need to create an account?</label>
           <div class="collapse-content text-sm">While you can explore some content without an account, creating an account allows you to track your progress, save your lessons, and access personalized learning recommendations. Signing up is quick and free!</div>
         </div>
         <div class="collapse collapse-plus bg-base border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold">4. How can I build my English vocabulary?</div>
+          <input type="radio" name="my-accordion-3" id="faq9" />
+          <label for="faq9" class="collapse-title font-semibold">How can I build my English vocabulary?</label>
           <div class="collapse-content text-sm">Our website offers multiple ways to expand your vocabulary. so stay connected and keep hardworking.</div>
         </div>
         <div class="collapse collapse-plus bg-base border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold"> 5. Do you offer certificates for completed courses?</div>
-          <div class="collapse-content text-sm">Currently, we do not offer certificates. However, we are working on introducing certification programs for learners who complete structured courses. Stay tuned for updates!
-
-          </div>
+          <input type="radio" name="my-accordion-3" id="faq10" />
+          <label for="faq10" class="collapse-title font-semibold">Do you offer certificates for completed courses?</label>
+          <div class="collapse-content text-sm">Currently, we do not offer certificates. However, we are working on introducing certification programs for learners who complete structured courses. Stay tuned for updates!</div>
         </div>
+      
 
       </section>
 
     </main>
+    
     <!-- footer section  -->
     <footer class=" flex justify-between items-center py-24 px-20">
         
@@ -218,5 +222,6 @@
       </div>
     </footer>
     <script src="scripts/login.js"></script>
+    <script src="scripts/vocabulary.js"></script>
   </body>
 </html>
