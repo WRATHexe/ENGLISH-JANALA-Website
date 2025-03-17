@@ -10,16 +10,17 @@ function display(categories){
     const categoryContainer = document.getElementById('lesson-container');
     for (category of categories){
         const button = document.createElement("button");
-        button.classList.add('btn', 'bg-white', 'text-purple', 'border-purple', 'border-2', 'flex', 'gap-2', 'hover:bg-Purple', 'hover:text-white', 'hover:border-white', 'rounded-lg', 'p-2', 'items-center');
+        button.classList.add('btn', 'bg-white', 'text-purple', 'border-purple', 'border-2', 'flex', 'gap-2', 'hover:bg-Purple', 'hover:text-white', 'hover:border-white','group', 'rounded-lg', 'p-2', 'items-center' );
         button.innerHTML = `
-        <img class="hover: text-white" src="/assets/fa-book-open.png" alt="faq" class="h-5">
-            <p>${category.lessonName}</p>
+        <img class="hover: text-white" src="/assets/fa-book-open.png" alt="faq" class="h-5 group-hover:brightness-0 group-hover:invert">
+            <p>Lesson -${category.level_no}</p>
         `;
         const level = category.level_no;
         button.onclick = () => 
         {
             loadDetails(level);
             document.getElementById('no-category').style.display = 'none';
+
         }
 
         categoryContainer.appendChild(button);
@@ -42,39 +43,60 @@ function loadDetails(level){
 //     <div class="vocabulary-grid grid lg:grid-cols-3 gap-8 my-10">
           
 //            <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-    //     <!-- Eager Section -->
+    //     <!--  selective word Section -->
     //     <div class="mb-6">
     //         <h2 class="text-xl font-bold text-blue-600">Eager</h2>
     //         <p class="text-gray-700 mt-2">Meaning / Pronunciation</p>
     //         <p class="text-gray-600 italic">"对话录/多讲式"</p>
     //         <p class="text-gray-700 mt-2">8</p>
     //     </div>
-
-    //     <!-- Hesitate Section -->
-    //     <div>
-    //         <h2 class="text-xl font-bold text-blue-600">Hesitate</h2>
-    //         <p class="text-gray-700 mt-2">Meaning / Pronunciation</p>
-    //         <p class="text-gray-600 italic">"简述短语/单词短语"</p>
-    //     </div>
     // </div>
 function displayDetails(details){
     console.log(details);
     const detailsContainer = document.getElementById('vocabulary-container');
-    detailsContainer.innerHTML = '';
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const noContent = document.getElementById('no-content');
     
-    details.forEach (detail => {
-        const card = document.createElement('div');
-        card.classList.add('vocabulary-card', 'bg-white', 'p-5', 'shadow-md');
-        card.innerHTML = `
-        <h2 class="text-xl font-bold text-blue-600">${detail.word}</h2>
-        <p class="text-gray-700 mt-2">Meaning / Pronunciation</p>
-        <p class="text-gray-600 italic">"${detail.meaning} / ${detail.pronunciation}"</p>
-        `;
-        card.onclick = () => {
-            loadWordDetail(detail.id);
+    loadingSpinner.classList.remove('hidden');
+    detailsContainer.innerHTML = '';
+    noContent.innerHTML = '';
+
+    setTimeout(() => {
+        loadingSpinner.classList.add('hidden');
+
+        if (details.length === 0) {
+            noContent.classList.remove('hidden');
+            noContent.innerHTML = `
+                <div class="flex flex-col items-center justify-center text-center">
+                    <img src="assets/alert-error.png" alt="alert" class="h-32 w-32">
+                    <p class=" font-semibold mt-4 text-gray-600">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+                    <h2 class="text-3xl font-semibold mt-4">নেক্সট Lesson এ যান</h2>
+                </div>
+            `;
+            return;
         }
-        detailsContainer.appendChild(card);
-    }); 
+        detailsContainer.classList.add('grid', 'lg:grid-cols-3', 'gap-8');
+        details.forEach (detail => {
+            const card = document.createElement('div');
+            card.classList.add('vocabulary-card', 'bg-white', 'px-36','pb-36','pt-14', 'shadow-md', 'relative');
+            if(detail.meaning === null){
+                detail.meaning = 'অর্থ নেই';
+            }
+            
+            card.innerHTML = `
+            <h2 class="text-3xl font-bold">${detail.word}</h2>
+            <p class="text-xl my-6">Meaning / Pronunciation</p>
+            <p class="hind-siliguri text-3xl text-gray-600 font-semibold">"${detail.meaning} / ${detail.pronunciation}"</p>
+            <img src="https://img.icons8.com/?size=100&id=82742&format=png&color=000000" alt="info" class="absolute bottom-14 left-14 h-14 w-14" onclick="openModal()">
+            <img src="https://img.icons8.com/?size=100&id=9983&format=png&color=000000" alt="mic" class="absolute bottom-14 right-14 h-12 w-12">
+            `;
+            card.onclick = () => {
+                loadWordDetail(detail.id);
+            }
+            detailsContainer.appendChild(card);
+        
+        });
+    },500); 
 
 }
 
@@ -107,5 +129,47 @@ function loadWordDetail(id){
 //       "id": 5
 //     }
 //   }
+
+
+function displayWordDetail(word){
+    console.log(word);
+    const wordContainer = document.getElementById('word-container');
+    wordContainer.innerHTML = '';
+    const card = document.createElement('div');
+    card.classList.add('word-card', 'bg-white', 'p-6', 'shadow-md','text-2xl','w-full');
+    let synonyms = '';
+    if (Array.isArray(word.synonyms)&& word.synonyms.length > 0){
+        synonyms = word.synonyms.map(synonym => `<span class="bg-blue_lite px-2 py-1 rounded-md mx-1">${synonym}</span>`).join(' ');
+    } else {
+        synonyms = `<p class="">কোনো সমার্থক শব্দ পাওয়া যায়নি</p>`;
+    }
+    if(word.meaning === null){
+        word.meaning = 'অর্থ নেই';
+    }
+
+    card.innerHTML = `
+    <div class="flex text-3xl font-bold">
+    <h2 class="">${word.word} </h2>(
+    <img src="https://img.icons8.com/?size=100&id=9622&format=png&color=000000" alt="pronunciation" class="h-8 w-8">: <span class="font">${word.pronunciation}</span>)
+    </div>
+    <p class=" font-bold mt-8 mb-2">Meaning</p>
+    <p class="hind-siliguri ">${word.meaning}</p>
+    <p class="font-bold mt-8 mb-2">Example</p>
+    <p class=" ">${word.sentence}</p>
+    <p class="hind-siliguri font-bold mt-8 mb-2">সমার্থক শব্দ গুলো</p>
+    <p>${synonyms}</p>
+    
+    `;
+    wordContainer.appendChild(card);
+    
+}
+
+function openModal() {
+    document.getElementById('word-modal').showModal();
+}
+
+function closeModal() {
+    document.getElementById('word-modal').close();
+}
 
 
