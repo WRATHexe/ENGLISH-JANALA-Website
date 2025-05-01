@@ -15,7 +15,7 @@ Welcome to the **English জানালা Website** repository! This project i
 
 The **English জানালা Website** is a platform designed to provide engaging English learning resources and tools. Whether you're a beginner or looking to refine your skills, this website has something for everyone! 🌍
 
-🌐 **Live Demo**: [Explore the English জানালা Website here!](https://inquisitive-toffee-2b55b5.netlify.app)
+🌐 **Live Demo**: [Explore the English জানালা Website here!](https://wrath-english-learning-web.netlify.app/)
 
 With its interactive modules and user-friendly design, the website ensures a seamless learning experience for users of all levels. Dive in and start your journey today! 🚀
 The **English জানালা Website** is a platform designed to provide engaging English learning resources and tools. Whether you're a beginner or looking to refine your skills, this website has something for everyone! 🌍
