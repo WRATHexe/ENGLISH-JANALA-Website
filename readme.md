@@ -1,6 +1,6 @@
-# 🌟 Janala Website
+# 🌟 ENGLISH জানালা Website
 
-Welcome to the **English Janala Website** repository! This project is all about making English learning fun, interactive, and accessible for everyone. 🚀
+Welcome to the **English জানালা Website** repository! This project is all about making English learning fun, interactive, and accessible for everyone. 🚀
 
 ## 📚 Table of Contents
 - [👀 Overview](#-overview)
@@ -12,7 +12,13 @@ Welcome to the **English Janala Website** repository! This project is all about 
 - [📜 License](#-license)
 
 ## 👀 Overview
-The **Janala Website** is a platform designed to provide engaging English learning resources and tools. Whether you're a beginner or looking to refine your skills, this website has something for everyone! 🌍
+
+The **English জানালা Website** is a platform designed to provide engaging English learning resources and tools. Whether you're a beginner or looking to refine your skills, this website has something for everyone! 🌍
+
+🌐 **Live Demo**: [Explore the English জানালা Website here!](https://inquisitive-toffee-2b55b5.netlify.app)
+
+With its interactive modules and user-friendly design, the website ensures a seamless learning experience for users of all levels. Dive in and start your journey today! 🚀
+The **English জানালা Website** is a platform designed to provide engaging English learning resources and tools. Whether you're a beginner or looking to refine your skills, this website has something for everyone! 🌍
 
 ## ✨ Features
 - 🎯 **Interactive Modules**: Learn English through fun and engaging activities.
@@ -61,9 +67,6 @@ We ❤️ contributions! Here's how you can help:
     git push origin feature-name
     ```
 5. **Submit a pull request** and let us know what you've added!
-
-## 📜 License
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and share it. 🌟
 
 ---
 
