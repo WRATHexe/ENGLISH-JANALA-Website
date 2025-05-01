@@ -16,3 +16,11 @@ function login() {
         alert('Wrong password! Please try again.');
     }
 }
+
+function logout() {
+    alert('You have been logged out!');
+    document.getElementById('hero').style.display = 'flex'; // Show the login section
+    document.getElementById('navMenu').classList.add('hidden'); // Hide the navigation menu
+    document.getElementById('vocabulary').classList.add('hidden'); // Hide the vocabulary section
+    document.getElementById('faq').classList.add('hidden'); // Hide the FAQ section
+}
